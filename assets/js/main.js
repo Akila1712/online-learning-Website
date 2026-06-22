@@ -67,10 +67,12 @@
   /*--------------------------------------------------------------
     1. Preloader
   --------------------------------------------------------------*/
-  function preloader() {
-    $('.td_preloader').fadeOut();
-    $('td_preloader_in').delay(150).fadeOut('slow');
-  }
+ function preloader() {
+    setTimeout(function () {
+        $('.td_preloader').fadeOut(500);
+        $('.td_preloader_in').fadeOut(500);
+    }, 1000); // 1 second
+}
 
   /*--------------------------------------------------------------
     2. Mobile Menu
