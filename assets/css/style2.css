@@ -387,9 +387,94 @@
     margin:auto;
     line-height:1.15;
     text-align:center;
-    font-size: 45px;
+    font-size: 40px;
 }
 .td_hero_title span{
     display:block;
     margin:25px 0 10px;
+}
+
+.td_image_box_img_1 img{
+
+    height: 450px;
+    object-fit: contain;
+}
+
+.beycan-process-section{
+padding:100px 0;
+background:#f8f9ff;
+}
+
+.process-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:25px;
+margin-top:60px;
+}
+
+.process-card{
+background:#fff;
+border-radius:20px;
+padding:30px 20px;
+text-align:center;
+position:relative;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.process-card:hover{
+transform:translateY(-8px);
+}
+
+.process-number{
+position:absolute;
+top:15px;
+left:15px;
+width:40px;
+height:40px;
+border-radius:50%;
+background:#ff9800;
+color:#fff;
+font-weight:700;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.process-icon{
+width:90px;
+height:90px;
+margin:20px auto;
+border-radius:50%;
+background:#fff4e8;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.process-icon i{
+font-size:40px;
+color:#ff9800;
+}
+
+.process-card h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.process-card p{
+margin:0;
+color:#666;
+}
+
+@media(max-width:991px){
+.process-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:575px){
+.process-grid{
+grid-template-columns:1fr;
+}
 }

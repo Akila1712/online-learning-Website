@@ -9770,19 +9770,20 @@ html .ui-button.ui-state-disabled:active {
   background-color: rgba(235, 236, 237, 0.1);
 }
 
-.td_hero.td_style_2 {
-  max-height: 1000px;
-  min-height: 700px;
-  height: 100vh;
+ .td_hero.td_style_2 {
+  height: 600px;
+  overflow: hidden;
+  margin-top: 40px;
   position: relative;
-  padding: 140px 0 0;
 }
 @media (max-width: 991px) {
-  .td_hero.td_style_2 {
-    height: initial;
-    max-height: initial;
-    padding: 160px 0 80px;
-  }
+.td_hero.td_style_2 {
+height: auto;
+min-height: 700px;
+margin-top: 30px;
+padding-top: 20px;
+}
+
 }
 .td_hero.td_style_2::before {
   content: "";
@@ -9818,6 +9819,7 @@ html .ui-button.ui-state-disabled:active {
     padding: 0px;
     color: var(--accent-color);
   }
+  
 }
 .td_hero.td_style_2 .td_hero_title svg {
   position: absolute;
