@@ -822,12 +822,15 @@
 }
 
 @media(max-width:767px){
-    .grid{
+   .grid{
         grid-template-columns:1fr;
+        justify-items:center;
     }
 
     .card{
-        max-width:100%;
+        width:100%;
+        max-width:320px;
+        margin:auto;
     }
 
     .thumb{
@@ -840,5 +843,15 @@
 
     .desc{
         font-size:13px;
+    }
+
+  .contact-card,
+    .contact-info-box{
+        max-width:350px;
+        margin:0 auto 20px;
+    }
+
+    .contact-section .row{
+        justify-content:center;
     }
 }
