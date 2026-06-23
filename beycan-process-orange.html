@@ -1,0 +1,384 @@
+<!--
+  BEYCAN — Learning Process Section
+  Brand color : #ff9b24
+  Icons       : Material Design Icons via jsDelivr CDN (no download needed)
+  Drop this entire block into your index.html in place of the old process section.
+-->
+
+<style>
+@keyframes bp-fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes bp-pulse  { 0%{transform:scale(1);opacity:.5} 70%{transform:scale(1.65);opacity:0} 100%{transform:scale(1.65);opacity:0} }
+@keyframes bp-badge  { from{transform:scale(0) rotate(-20deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+
+.beycan-process-section { padding: 80px 0 60px; }
+
+/* Track */
+.bp-track { position:relative; display:flex; justify-content:space-between; align-items:flex-start; padding:0 20px; margin-top:52px; }
+.bp-rail  { position:absolute; top:34px; left:calc(20px + 34px); right:calc(20px + 34px); height:3px; background:#e5e7eb; border-radius:2px; z-index:0; }
+.bp-rail-fill { height:100%; background:#ff9b24; border-radius:2px; width:0; transition:width 1.1s cubic-bezier(.4,0,.2,1); }
+
+/* Steps */
+.bp-step { flex:1; display:flex; flex-direction:column; align-items:center; z-index:1; opacity:0; transform:translateY(16px); transition:opacity .45s, transform .45s; cursor:pointer; }
+.bp-step.bp-vis { opacity:1; transform:translateY(0); }
+
+/* Icon circle */
+.bp-iw   { position:relative; width:68px; height:68px; margin-bottom:12px; }
+.bp-ring { position:absolute; inset:0; border-radius:50%; background:#ff9b24; opacity:0; }
+.bp-step.bp-act .bp-ring { animation:bp-pulse 1.6s ease-out infinite; }
+
+.bp-circ { position:absolute; inset:0; border-radius:50%; background:#fff; border:2px solid #e5e7eb; display:flex; align-items:center; justify-content:center; transition:all .3s; }
+.bp-step.bp-act .bp-circ { background:#fff4e6; border-color:#ff9b24; }
+.bp-step.bp-don .bp-circ { background:#ff9b24; border-color:#ff9b24; }
+
+.bp-ico  { width:30px; height:30px; object-fit:contain; filter:grayscale(1) opacity(.45); transition:filter .3s, transform .3s; }
+.bp-step.bp-act .bp-ico { filter:none; transform:scale(1.1); }
+.bp-step.bp-don .bp-ico { filter:brightness(0) invert(1); }
+
+/* Number badge */
+.bp-num  { position:absolute; top:-4px; right:-4px; width:20px; height:20px; border-radius:50%; background:#f3f4f6; border:1.5px solid #d1d5db; font-size:10px; font-weight:700; color:#6b7280; display:flex; align-items:center; justify-content:center; transform:scale(0); }
+.bp-step.bp-vis .bp-num  { animation:bp-badge .3s ease .25s forwards; }
+.bp-step.bp-act .bp-num,
+.bp-step.bp-don .bp-num  { background:#ff9b24; border-color:#ff9b24; color:#fff; }
+
+/* Labels */
+.bp-lbl { font-size:14px; font-weight:700; color:#111827; text-align:center; margin-bottom:4px; transition:color .3s; }
+.bp-step.bp-act .bp-lbl { color:#ff9b24; }
+.bp-dsc { font-size:12px; color:#9ca3af; text-align:center; line-height:1.5; max-width:90px; }
+
+/* Detail card */
+.bp-card { margin-top:32px; padding:20px 24px; background:#fff; border:1px solid #e5e7eb; border-left:4px solid #ff9b24; border-radius:0 12px 12px 0; display:flex; align-items:flex-start; gap:18px; animation:bp-fadeUp .35s ease; }
+.bp-cico { width:48px; height:48px; border-radius:50%; background:#fff4e6; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.bp-cimg { width:26px; height:26px; object-fit:contain; }
+.bp-ctit { font-size:16px; font-weight:700; color:#111827; margin:0 0 6px; }
+.bp-ctxt { font-size:14px; color:#6b7280; line-height:1.7; margin:0; }
+
+/* Dot nav */
+.bp-nav { display:flex; justify-content:center; gap:8px; margin-top:24px; }
+.bp-dot { width:8px; height:8px; border-radius:50%; background:#d1d5db; border:none; cursor:pointer; padding:0; transition:background .3s, transform .2s; }
+.bp-dot.bp-act { background:#ff9b24; transform:scale(1.35); }
+
+/* Auto toggle */
+.bp-auto { display:flex; align-items:center; justify-content:center; gap:7px; margin:14px auto 0; font-size:12px; color:#9ca3af; background:none; border:none; cursor:pointer; padding:4px 12px; border-radius:20px; }
+.bp-auto:hover { background:#f9fafb; }
+.bp-led  { width:7px; height:7px; border-radius:50%; background:#22c55e; transition:background .3s; }
+.bp-led.off { background:#d1d5db; }
+
+
+/* =================================
+   BEYCAN RESPONSIVE IMPROVEMENT
+================================= */
+
+.beycan-process-section,
+.beycan-process-section *{
+    font-family:'Poppins',sans-serif;
+}
+
+/* Hover */
+.bp-step:hover .bp-circ{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(255,155,36,.15);
+}
+
+/* Tablet */
+@media (max-width:991px){
+
+    .td_section_title{
+        font-size:38px !important;
+    }
+
+    .bp-card{
+        max-width:100%;
+    }
+}
+@media (max-width:767px){
+
+    .bp-track{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:30px;
+        position:relative;
+        padding:0;
+        margin-top:30px;
+    }
+
+    /* Vertical Timeline Line */
+    .bp-track::before{
+        content:"";
+        position:absolute;
+        top:30px;
+        bottom:30px;
+        left:50%;
+        width:3px;
+        background:#e5e7eb;
+        transform:translateX(-50%);
+        z-index:0;
+    }
+
+    .bp-rail{
+        display:none;
+    }
+
+    .bp-step{
+        position:relative;
+        z-index:2;
+        width:100%;
+        max-width:280px;
+        opacity:1 !important;
+        transform:none !important;
+    }
+
+    .bp-iw{
+        width:60px;
+        height:60px;
+        margin-bottom:10px;
+        background:#fff;
+    }
+
+    .bp-lbl{
+        font-size:14px;
+    }
+
+    .bp-dsc{
+        max-width:220px;
+        font-size:12px;
+    }
+
+    .bp-card{
+        margin-top:25px;
+        padding:18px;
+        border-left:none;
+        border-top:4px solid #ff9b24;
+        border-radius:12px;
+        flex-direction:column;
+        text-align:center;
+        align-items:center;
+    }
+
+    .bp-nav,
+    .bp-auto{
+        display:none;
+    }
+}
+
+@media (max-width:480px){
+
+    .bp-step{
+        max-width:240px;
+    }
+
+    .td_section_title{
+        font-size:24px !important;
+    }
+}
+</style>
+
+<section class="beycan-process-section">
+  <div class="container">
+
+    <div class="td_section_heading td_style_1 text-center">
+      <p class="td_section_subtitle_up td_fs_18 td_semibold td_spacing_1 td_mb_10 text-uppercase td_accent_color">
+        <i></i> Learning Process <i></i>
+      </p>
+      <h2 class="td_section_title td_fs_48 td_mb_20">
+        Your Learning Journey with BEYCAN
+      </h2>
+      <p class="td_section_subtitle td_fs_18">
+        From enrollment to certification, we guide students through every step.
+      </p>
+    </div>
+
+    <div class="bp-track" id="bpTrack">
+      <div class="bp-rail"><div class="bp-rail-fill" id="bpFill"></div></div>
+
+      <div class="bp-step" data-step="0">
+        <div class="bp-iw">
+          <div class="bp-ring"></div>
+          <div class="bp-circ">
+            <img class="bp-ico" id="bpI0"
+              src="https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/how_to_reg.svg"
+              alt="Enroll">
+          </div>
+          <div class="bp-num">01</div>
+        </div>
+        <div class="bp-lbl">Enroll</div>
+        <div class="bp-dsc">Choose your course &amp; sign up</div>
+      </div>
+
+      <div class="bp-step" data-step="1">
+        <div class="bp-iw">
+          <div class="bp-ring"></div>
+          <div class="bp-circ">
+            <img class="bp-ico" id="bpI1"
+              src="https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/cast_for_education.svg"
+              alt="Learn live">
+          </div>
+          <div class="bp-num">02</div>
+        </div>
+        <div class="bp-lbl">Learn live</div>
+        <div class="bp-dsc">Interactive classes with trainers</div>
+      </div>
+
+      <div class="bp-step" data-step="2">
+        <div class="bp-iw">
+          <div class="bp-ring"></div>
+          <div class="bp-circ">
+            <img class="bp-ico" id="bpI2"
+              src="https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/construction.svg"
+              alt="Practice">
+          </div>
+          <div class="bp-num">03</div>
+        </div>
+        <div class="bp-lbl">Practice</div>
+        <div class="bp-dsc">Projects &amp; hands-on skills</div>
+      </div>
+
+      <div class="bp-step" data-step="3">
+        <div class="bp-iw">
+          <div class="bp-ring"></div>
+          <div class="bp-circ">
+            <img class="bp-ico" id="bpI3"
+              src="https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/school.svg"
+              alt="Offline support">
+          </div>
+          <div class="bp-num">04</div>
+        </div>
+        <div class="bp-lbl">Offline support</div>
+        <div class="bp-dsc">Weekly sessions &amp; doubt clearing</div>
+      </div>
+
+      <div class="bp-step" data-step="4">
+        <div class="bp-iw">
+          <div class="bp-ring"></div>
+          <div class="bp-circ">
+            <img class="bp-ico" id="bpI4"
+              src="https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/workspace_premium.svg"
+              alt="Get certified">
+          </div>
+          <div class="bp-num">05</div>
+        </div>
+        <div class="bp-lbl">Get certified</div>
+        <div class="bp-dsc">Earn your certificate</div>
+      </div>
+    </div>
+
+    <div id="bpDetail"></div>
+    <div class="bp-nav" id="bpNav"></div>
+    <button class="bp-auto" id="bpAutoBtn" onclick="bpToggleAuto()">
+      <span class="bp-led" id="bpLed"></span>
+      <span id="bpAutoLbl">Auto-playing</span>
+    </button>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var ICONS = [
+    'https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/how_to_reg.svg',
+    'https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/cast_for_education.svg',
+    'https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/construction.svg',
+    'https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/school.svg',
+    'https://cdn.jsdelivr.net/npm/@material-design-icons/svg@0.14.10/filled/workspace_premium.svg'
+  ];
+
+  var DATA = [
+    {
+      title: 'Step 1 — Enroll',
+      text:  'Choose the course that fits your goals and complete a quick enrollment via our enquiry form. Our team will contact you within 24 hours to confirm your slot and share onboarding details.'
+    },
+    {
+      title: 'Step 2 — Learn live',
+      text:  'Attend live, interactive online classes with experienced trainers in Tamil or English. Ask questions in real time, get instant feedback, and learn at a pace designed around you.'
+    },
+    {
+      title: 'Step 3 — Practice',
+      text:  'Apply what you learn through guided projects, assignments, and exercises. Practical skill-building is at the core of every BEYCAN course — not just theory.'
+    },
+    {
+      title: 'Step 4 — Offline support',
+      text:  'Every week, attend an in-person practical session at your nearest BEYCAN branch in Rajapalayam or Srivilliputhur. Hands-on support and doubt clearing from instructors, face to face.'
+    },
+    {
+      title: 'Step 5 — Get certified',
+      text:  'Successfully complete your course and receive an industry-recognized certificate from BEYCAN. A credential that validates your skills for academics, careers, and beyond.'
+    }
+  ];
+
+  var cur   = 0;
+  var timer = null;
+  var auto  = true;
+
+  var steps = document.querySelectorAll('.bp-step');
+  var fill  = document.getElementById('bpFill');
+  var det   = document.getElementById('bpDetail');
+  var nav   = document.getElementById('bpNav');
+  var led   = document.getElementById('bpLed');
+  var albl  = document.getElementById('bpAutoLbl');
+
+  /* Build nav dots */
+  DATA.forEach(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'bp-dot';
+    d.setAttribute('aria-label', 'Go to step ' + (i + 1));
+    d.addEventListener('click', function () { goTo(i); });
+    nav.appendChild(d);
+  });
+
+  /* Step click */
+  steps.forEach(function (el, i) {
+    el.addEventListener('click', function () { goTo(i); });
+  });
+
+  function render() {
+if(window.innerWidth > 767){
+    fill.style.width = (cur === 0 ? 0 : (cur / (steps.length - 1)) * 100) + '%';
+}
+    steps.forEach(function (el, i) {
+      el.classList.remove('bp-act', 'bp-don');
+      if (i === cur)      el.classList.add('bp-act');
+      else if (i < cur)  el.classList.add('bp-don');
+    });
+
+    var d = DATA[cur];
+    det.innerHTML =
+      '<div class="bp-card">' +
+        '<div class="bp-cico"><img class="bp-cimg" src="' + ICONS[cur] + '" alt=""></div>' +
+        '<div>' +
+          '<p class="bp-ctit">' + d.title + '</p>' +
+          '<p class="bp-ctxt">' + d.text  + '</p>' +
+        '</div>' +
+      '</div>';
+
+    document.querySelectorAll('.bp-dot').forEach(function (dot, i) {
+      dot.classList.toggle('bp-act', i === cur);
+    });
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function () { cur = (cur + 1) % steps.length; render(); }, 2800);
+  }
+
+  function goTo(i) { cur = i; render(); if (auto) resetTimer(); }
+
+  window.bpToggleAuto = function () {
+    auto = !auto;
+    if (auto) {
+      resetTimer();
+      led.classList.remove('off');
+      albl.textContent = 'Auto-playing';
+    } else {
+      clearInterval(timer);
+      led.classList.add('off');
+      albl.textContent = 'Paused — click steps to navigate';
+    }
+  };
+
+  /* Stagger-in */
+  steps.forEach(function (el, i) {
+    setTimeout(function () { el.classList.add('bp-vis'); }, i * 110);
+  });
+  setTimeout(function () { render(); resetTimer(); }, 620);
+})();
+</script>
